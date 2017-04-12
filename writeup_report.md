@@ -133,6 +133,8 @@ $$ {\rm R_{curv}} = \frac{{[ 1 + ( 2Ay+B )^2 ]}^{3/2}}{| 2A |} $$
 
 And its coded in the first lines of the function `curvature()` in the cell under the title **Curvature**.
 
+The results were converted from pixels to meters and rounded to the nearest 50m for values less than 1,000 and to 100m for values over it.
+
 
 ####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
