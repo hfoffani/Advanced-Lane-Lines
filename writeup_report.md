@@ -69,7 +69,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform is in the function `transform_perspective()`, which appears in the cell below the title **Transform Perspective**. It takes as inputs an image (`img`), as well as source (`srcpoints`) and destination (`dstpoints`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform is in the function `transform_perspective()`, which appears in the cell below the title **Transform Perspective**. It takes as inputs an image (`img`), as well as source (`srcpoints`) and destination (`dstpoints`) points.  I chose to hard-code the source and destination points in the following manner:
 
 ```
 srcpoints = np.float32([[270,670],[592,450],[691,450],[1041,670]])
@@ -102,11 +102,11 @@ After changing of perspective I applied color transform. First I convert the RGB
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I implemented a sliding windows algorithm to indentify the centroids of windows (of size `window_width=50` by `window_height=80`) where the left and the right lane lines have the biggest probability to be in. The code is under the cell with the title **Centroids using Sliding Window**.
+Then I implemented a sliding windows algorithm to identify the centroids of windows (of size `window_width=50` by `window_height=80`) where the left and the right lane lines have the biggest probability to be in. The code is under the cell with the title **Centroids using Sliding Window**.
 
 It results in two sets of nine (720/80) points each (one for the left lane and one for the right lane.)
 
-Each set has enough points to let nunmpy fit a 2nd order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in **Figure 5** above.
+Each set has enough points to let numpy fit a second order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in **Figure 5** above.
 
 ![Centroids by Sliding Window][image05]
 
@@ -151,10 +151,10 @@ Here's a [link to my video result](./advanced_lane.mp4)
 
 Although (or because) the pipeline is pretty straightforward this implementation has several issues:
 
-1. There are a lot of parameters to tune, lik sliding window size, color space thresholds, perspective transform polygone, etc.
+1. There are a lot of parameters to tune, like sliding window size, color space thresholds, perspective transform polygon, etc.
 1. It lacks of solid smoothing step.
 1. It depends too much in the ability to detect *both* lines lane.
 
 A better parameter tuning (maybe using some grid search technique) most probably will help dealing with different types of pavements or line painting.
 Also a good smoothing step would be able to cope with faint lines.
-However whenever a line is missing for a long section, say a hundred meters, this implementation will fail misserably.
+However whenever a line is missing for a long section, say a hundred meters, this implementation will fail miserably.
