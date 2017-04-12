@@ -25,8 +25,7 @@ The goals / steps of this project are the following:
 [image03]: ./output_images/perspective0.png "Transform Perspective"
 [image04]: ./output_images/thresholded0.png "Color Space transform"
 [image05]: ./output_images/centroids1.png "Centroids by Sliding Window"
-[image06]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image07]: ./examples/example_output.jpg "Output"
+[image06]: ./output_images/draw0.png "Drawing the Lane Area"
 [video1]: ./project_video.mp4 "Video"
 
 ### [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -105,13 +104,28 @@ Each set has enough points to let nunmpy fit a 2nd order polynomial using the fu
 
 ####5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+According to the tutorial the radius of curvature at any point x of the function x=f(y) is given as follows:
+
+$$ {\rm R_{curv}} = \frac{{{{\left[ {1 + {{\left( {\frac{{dy}}{{dx}}} \right)}^2}}  \right]}^{3/2}}}}{{\left| {\frac{{{d^2}y}}{{d{x^2}}}}  \right|}} $$
+
+In the case of the second order polynomial above, the first and second derivatives are:
+
+$$ f'(y) = 2Ay + B $$
+$$ f''(y) = 2A $$
+
+So the equation for radius of curvature becomes:
+
+$$ {\rm R_{curv}} = \frac{{[ 1 + ( 2Ay+B )^2 ]}^{3/2}}{| 2A |} $$
+
+And its coded in the first lines of the function `curvature()` in the cell under the title **Curvature**.
+
 
 ####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
 
-![alt text][image6]
+The function `draw()` in the cell under the title **Drawing** displays over the road the area that was identified as lane. Here is an example:
+
+![Drawing the lane area][image06]
 
 ---
 
