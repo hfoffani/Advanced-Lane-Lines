@@ -57,7 +57,12 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ### Pipeline (single images)
 
-_Note: Points 2 and 3 are flipped because that is the order in the image pipeline I have implemented._
+_Note 1: Points 2 and 3 are flipped because that is the order in the image pipeline I have implemented._
+
+_Note 2: This implementation follows the examples described in Udacity lessons._
+
+_Note 3: Many more images can be found in the `output_images` directory included in the zip file._
+
 
 #### 1. Provide an example of a distortion-corrected image.
 
