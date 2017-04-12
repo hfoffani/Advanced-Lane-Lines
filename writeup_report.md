@@ -141,5 +141,12 @@ Here's a [link to my video result](./advanced_lane.mp4)
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.
+Although (or because) the pipeline is pretty straightforward this implementation has several issues:
 
+1. There are a lot of parameters to tune, lik sliding window size, color space thresholds, perspective transform polygone, etc.
+1. It lacks of solid smoothing step.
+1. It depends too much in the ability to detect *both* lines lane.
+
+A better parameter tuning (maybe using some grid search technique) most probably will help dealing with different types of pavements or line painting.
+Also a good smoothing step would be able to cope with faint lines.
+However whenever a line is missing for a long section, say a hundred meters, this implementation will fail misserably.
