@@ -26,7 +26,7 @@ The goals / steps of this project are the following:
 [image04]: ./output_images/thresholded0.png "Color Space transform"
 [image05]: ./output_images/centroids1.png "Centroids by Sliding Window"
 [image06]: ./output_images/draw0.png "Drawing the Lane Area"
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./advanced_lane.mp4 "Video"
 
 ### [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -43,15 +43,21 @@ You're reading it!
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
-The code for this step is contained in the code cell of the IPython notebook located in "./image-proc.ipynb" with the title *Compute the camera calibration using chessboard images*.
+The code for this step is contained in the code cell of the IPython notebook located in "./image-proc.ipynb" with the title **Compute the camera calibration using chessboard images**.
 
 I use a set of known images of a chessboard for which the cv2 library provides a useful API to calibrate images. I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result:
+
+\pagebreak
 
 ![Undistorted][image01]
 
+\pagebreak
+
 ### Pipeline (single images)
+
+_Note: Points 2 and 3 are flipped because that is the order in the image pipeline I have implemented._
 
 #### 1. Provide an example of a distortion-corrected image.
 
@@ -60,7 +66,6 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 ![Original and Undistorted][image02]
 
 \pagebreak
-
 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -81,15 +86,19 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by processing an image of validated straight lane image.
 
+\pagebreak
+
 ![Transform Perspective][image03]
 
+\pagebreak
 
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
-After changing of perspective I applied color transform. First I convert the RGB image into HSV color space. Then I applied the Sobel operator (see [https://en.wikipedia.org/wiki/Sobel_operator]) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**.
+After changing of perspective I applied color transform. First I convert the RGB image into HSV color space. Then I applied the Sobel operator (see https://en.wikipedia.org/wiki/Sobel_operator) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**. The result is shown in **Figure 4**.
 
 ![Color Space][image04]
 
+\pagebreak
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -97,7 +106,7 @@ Then I implemented a sliding windows algorithm to indentify the centroids of win
 
 It results in two sets of nine (720/80) points each (one for the left lane and one for the right lane.)
 
-Each set has enough points to let nunmpy fit a 2nd order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in:
+Each set has enough points to let nunmpy fit a 2nd order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in **Figure 5** above.
 
 ![Centroids by Sliding Window][image05]
 
@@ -122,12 +131,11 @@ And its coded in the first lines of the function `curvature()` in the cell under
 
 ####6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-
-The function `draw()` in the cell under the title **Drawing** displays over the road the area that was identified as lane. Here is an example:
+**Figure 6** shows the final output of a test image which would be like a video frame. The function `draw()` in the cell under the title **Drawing** displays over the road the area that was identified as lane.
 
 ![Drawing the lane area][image06]
 
----
+\pagebreak
 
 ###Pipeline (video)
 
