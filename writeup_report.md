@@ -99,7 +99,7 @@ I verified that my perspective transform was working as expected by processing a
 
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
-After changing of perspective I applied color transform. First I convert the RGB image into HSV color space. Then I applied the Sobel operator (see https://en.wikipedia.org/wiki/Sobel_operator) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**. The result is shown in **Figure 4**.
+After changing of perspective I applied color transform. First I convert the RGB image into HLS color space. Then I applied the Sobel operator (see https://en.wikipedia.org/wiki/Sobel_operator) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**. The result is shown in **Figure 4**.
 
 ![Color Space][image04]
 
