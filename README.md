@@ -42,19 +42,18 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ### Pipeline (single images)
 
-_Note 1: Points 2 and 3 are flipped because that is the order in the image pipeline I have implemented._
 
-_Note 2: Many more images can be found in the `output_images` directory included in the zip file._
+_Note: Many more images can be found in the `output_images` directory included in the zip file._
 
 
-#### 1. Provide an example of a distortion-corrected image.
+#### Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 
 ![Original and Undistorted][image02]
 
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform is in the function `transform_perspective()`, which appears in the cell below the title **Transform Perspective**. It takes as inputs an image (`img`), as well as source (`srcpoints`) and destination (`dstpoints`) points.  I chose to hard-code the source and destination points in the following manner:
 
@@ -77,25 +76,25 @@ I verified that my perspective transform was working as expected by processing a
 ![Transform Perspective][image03]
 
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
+#### Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
-After changing of perspective I applied color transform. First I convert the RGB image into HLS color space. Then I applied the Sobel operator (see https://en.wikipedia.org/wiki/Sobel_operator) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**. I have tried several value combinations and finally I settled with a threshold of *(170-255)* for the S channel and a *(50-150)* for Sobel operator X derivative. Similar values were used by [other collegues like Paul Heraty](https://medium.com/@heratypaul/udacity-sdcnd-advanced-lane-finding-45012da5ca7d]) The result is shown in **Figure 4**.
+After changing of perspective I applied color transform. First I convert the RGB image into HLS color space. Then I applied the Sobel operator (see https://en.wikipedia.org/wiki/Sobel_operator) over the X derivative which highlights vertical lines while dimming horizontal ones (which supposedly would help to detect line lanes). Finally I filtered the S channel which would take care of picking white and yellow lanes. The code is under the cell with the title **Thresholded image**. I have tried several value combinations and finally I settled with a threshold of *(170-255)* for the S channel and a *(50-150)* for Sobel operator X derivative. Similar values were used by [other collegues like Paul Heraty](https://medium.com/@heratypaul/udacity-sdcnd-advanced-lane-finding-45012da5ca7d]) The result is shown here:
 
 ![Color Space][image04]
 
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I implemented a sliding windows algorithm to identify the centroids of windows (of size `window_width=50` by `window_height=80`) where the left and the right lane lines have the biggest probability to be in. The code is under the cell with the title **Centroids using Sliding Window**.
 
 It results in two sets of nine (720/80) points each (one for the left lane and one for the right lane.) After that I filtered centroids which are more than 50 pixels away from the previous y coordinate centroid. 
 
-Each set has enough points to let numpy fit a second order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in **Figure 5** above (less than nine because some of them were filtered.)
+Each set has enough points to let numpy fit a second order polynomial using the function `np.polyfit`. The boxes representing each centroid can be seen in then figure (less than nine because some of them were filtered.)
 
 ![Centroids by Sliding Window][image05]
 
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 The radius of curvature at any point x of the function x=f(y) is given as follows:
 
@@ -115,16 +114,16 @@ The results were converted from pixels to meters and rounded to the nearest 50m 
 Given the `x` values for the bottom of the image for the left and right polynomial and ssuming that the distance between each line is 3.7m and that the camera is in the middle of the car, its position is obtained by a simple cross-product.
 
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-**Figure 6** shows the final output of a test image which would be like a video frame. The function `draw()` in the cell under the title **Drawing** displays over the road the area that was identified as lane.
+The next image shows the final output of a test image which would be like a video frame. The function `draw()` in the cell under the title **Drawing** displays over the road the area that was identified as lane.
 
 ![Drawing the lane area][image06]
 
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 The first version of the video resulted in too much wobbling. It specially suffered under shadow conditions. However after I applied some smoothing the quality improved a lot. The smoothing and frame validation I applied are:
 
@@ -141,7 +140,7 @@ Here's a [link to my video result](./advanced_lane.mp4)
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Although (or because) the pipeline is pretty straightforward this implementation has several issues:
 
