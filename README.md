@@ -134,7 +134,7 @@ The first version of the video resulted in too much wobbling. It specially suffe
 1. Finally the lane to be shown is represented by a set of coefficients each of them is the result of the mean of the previous 10. I implemented it with a ring buffer (`collections.deque`)
 
 
-Here's a [link to my video result](./advanced_lane.mp4)
+[![Click to view!](https://img.youtube.com/vi/Mq3zFWd7CmI/0.jpg)](https://www.youtube.com/watch?v=Mq3zFWd7CmI)
 
 ---
 
