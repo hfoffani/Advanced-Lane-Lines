@@ -102,16 +102,11 @@ The radius of curvature at any point x of the function x=f(y) is given as follow
 ![radius of curvature](https://latex.codecogs.com/gif.latex?%7B%5Crm%20R_%7Bcurv%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%7B%5Cleft%5B%20%7B1%20&plus;%20%7B%7B%5Cleft%28%20%7B%5Cfrac%7B%7Bdy%7D%7D%7B%7Bdx%7D%7D%7D%20%5Cright%29%7D%5E2%7D%7D%20%5Cright%5D%7D%5E%7B3/2%7D%7D%7D%7D%7B%7B%5Cleft%7C%20%7B%5Cfrac%7B%7B%7Bd%5E2%7Dy%7D%7D%7B%7Bd%7Bx%5E2%7D%7D%7D%7D%20%5Cright%7C%7D%7D)
 
 
-$$ {\rm R_{curv}} = \frac{{{{\left[ {1 + {{\left( {\frac{{dy}}{{dx}}} \right)}^2}}  \right]}^{3/2}}}}{{\left| {\frac{{{d^2}y}}{{d{x^2}}}}  \right|}} $$
 
-In the case of the second order polynomial above, the first and second derivatives are:
+In the case of the second order polynomial above, the first and second derivatives are: *f'(y) = 2Ay + B* and
+*f''(y) = 2A* respectevly. So the equation for radius of curvature becomes:
 
-$$ f'(y) = 2Ay + B $$
-$$ f''(y) = 2A $$
-
-So the equation for radius of curvature becomes:
-
-$$ {\rm R_{curv}} = \frac{{[ 1 + ( 2Ay+B )^2 ]}^{3/2}}{| 2A |} $$
+![curvature on 2nd order poly](https://latex.codecogs.com/gif.latex?%7B%5Crm%20R_%7Bcurv%7D%7D%20%3D%20%5Cfrac%7B%7B%5B%201%20&plus;%20%28%202Ay&plus;B%20%29%5E2%20%5D%7D%5E%7B3/2%7D%7D%7B%7C%202A%20%7C%7D)
 
 And its coded in the first lines of the function `curvature()` in the cell under the title **Curvature**.
 
