@@ -99,6 +99,9 @@ Each set has enough points to let numpy fit a second order polynomial using the 
 
 The radius of curvature at any point x of the function x=f(y) is given as follows:
 
+![https://latex.codecogs.com/gif.latex?%7B%5Crm%20R_%7Bcurv%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%7B%5Cleft%5B%20%7B1%20&plus;%20%7B%7B%5Cleft%28%20%7B%5Cfrac%7B%7Bdy%7D%7D%7B%7Bdx%7D%7D%7D%20%5Cright%29%7D%5E2%7D%7D%20%5Cright%5D%7D%5E%7B3/2%7D%7D%7D%7D%7B%7B%5Cleft%7C%20%7B%5Cfrac%7B%7B%7Bd%5E2%7Dy%7D%7D%7B%7Bd%7Bx%5E2%7D%7D%7D%7D%20%5Cright%7C%7D%7D]
+
+
 $$ {\rm R_{curv}} = \frac{{{{\left[ {1 + {{\left( {\frac{{dy}}{{dx}}} \right)}^2}}  \right]}^{3/2}}}}{{\left| {\frac{{{d^2}y}}{{d{x^2}}}}  \right|}} $$
 
 In the case of the second order polynomial above, the first and second derivatives are:
