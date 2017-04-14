@@ -1,9 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-
 
 # Advanced Lane Finding Project
 
@@ -33,12 +27,6 @@ The goals / steps of this project are the following:
 I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 
-### Writeup / README
-
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf. 
-
-You're reading it!
-
 ### Camera Calibration
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
@@ -49,11 +37,8 @@ I use a set of known images of a chessboard for which the cv2 library provides a
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result:
 
-\pagebreak
-
 ![Undistorted][image01]
 
-\pagebreak
 
 ### Pipeline (single images)
 
@@ -89,11 +74,9 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by processing an image of validated straight lane image.
 
-\pagebreak
 
 ![Transform Perspective][image03]
 
-\pagebreak
 
 ####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image. Provide an example of a binary image result.
 
@@ -101,7 +84,6 @@ After changing of perspective I applied color transform. First I convert the RGB
 
 ![Color Space][image04]
 
-\pagebreak
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -142,7 +124,6 @@ Given the `x` values for the bottom of the image for the left and right polynomi
 
 ![Drawing the lane area][image06]
 
-\pagebreak
 
 ###Pipeline (video)
 
